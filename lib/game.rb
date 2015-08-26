@@ -27,23 +27,21 @@ class Game
     end
   end
 
-  def move
-    if @turn == 0
-      current_player = player1
-      @turn = 1
+  def current_player
+    if @turn.even?
+      player2
     else
-      current_player = player2
-      @turn = 0
+      player1
     end
+  end
+
+  def move
+    @turn += 1
     print "#{current_player.name}'s turn! [#{current_player.token}] "
     print "Which column do you choose (A-G)? "
     column = gets.chomp.downcase
     @board.drop(current_player.token, column)
     check_win(current_player)
-  end
-
-  def current_player
-    if @turn.
   end
 
   def check_win(player)

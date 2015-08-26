@@ -11,4 +11,24 @@ def play
   game.move
 end
 
-play
+def restart?
+  print "Play again? (Y/N) "
+  answer = gets.chomp.downcase
+
+  if answer == "y"
+    initiate_game
+  elsif answer == "n"
+    puts "Ok, bye!"
+  else
+    puts "That is not a valid response."
+    restart?
+  end
+end
+
+def initiate_game
+  play
+
+  restart?
+end
+
+initiate_game
