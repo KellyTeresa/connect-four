@@ -88,11 +88,13 @@ class Game
   end
 
   def vertical_win
-    count_up(grid, x_coord, y_coord) + count_down(grid, x_coord, y_coord) - 1 == 4
+    count_up(grid, x_coord, y_coord) +
+    count_down(grid, x_coord, y_coord) - 1 == 4
   end
 
   def horizontal_win
-    count_left(grid, x_coord, y_coord) + count_right(grid, x_coord, y_coord) - 1 == 4
+    count_left(grid, x_coord, y_coord) +
+    count_right(grid, x_coord, y_coord) - 1 == 4
   end
 
   def diagonal_win
