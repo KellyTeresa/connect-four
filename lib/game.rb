@@ -125,7 +125,7 @@ class Game
 
   # Need to replace
   ####
-  # if stop_counting?(grid, x, y)
+  # if stop_counting?(x, y)
   #   return 0
   # end
   # count = 1
