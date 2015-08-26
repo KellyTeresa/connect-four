@@ -102,28 +102,35 @@ class Game
   end
 
   def forward_diagonal
-    sum_up_right(grid, x_coord, y_coord) + sum_down_left(grid, x_coord, y_coord) - 1 == 4
+    sum_up_right(grid, x_coord, y_coord) +
+    sum_down_left(grid, x_coord, y_coord) - 1 == 4
   end
 
   def backward_diagonal
-    sum_down_right(grid, x_coord, y_coord) + sum_up_left(grid, x_coord, y_coord) - 1 == 4
+    sum_down_right(grid, x_coord, y_coord) +
+    sum_up_left(grid, x_coord, y_coord) - 1 == 4
   end
 
   def stop_counting?(grid, x, y)
-    token = current_player.token
     out_of_bounds = false
     is_nil = false
-
     if x < 0 || x > 5 || y < 0 || y > 5
       out_of_bounds = true
     end
-
     if grid[x].nil? || grid[x][y].nil?
       is_nil = true
     end
-
-    out_of_bounds || is_nil || grid[x][y] != token
+    out_of_bounds || is_nil || grid[x][y] != current_player.token
   end
+
+  # Need to replace
+  ####
+  # if stop_counting?(grid, x, y)
+  #   return 0
+  # end
+  # count = 1
+  ####
+  # with something more DRY
 
   def count_up(grid, x, y)
     if stop_counting?(grid, x, y)
