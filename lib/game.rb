@@ -88,13 +88,13 @@ class Game
   end
 
   def vertical_win
-    count_up(grid, x_coord, y_coord) +
-    count_down(grid, x_coord, y_coord) - 1 == 4
+    count_up(x_coord, y_coord) +
+    count_down(x_coord, y_coord) - 1 == 4
   end
 
   def horizontal_win
-    count_left(grid, x_coord, y_coord) +
-    count_right(grid, x_coord, y_coord) - 1 == 4
+    count_left(x_coord, y_coord) +
+    count_right(x_coord, y_coord) - 1 == 4
   end
 
   def diagonal_win
@@ -102,16 +102,16 @@ class Game
   end
 
   def forward_diagonal
-    sum_up_right(grid, x_coord, y_coord) +
-    sum_down_left(grid, x_coord, y_coord) - 1 == 4
+    sum_up_right(x_coord, y_coord) +
+    sum_down_left(x_coord, y_coord) - 1 == 4
   end
 
   def backward_diagonal
-    sum_down_right(grid, x_coord, y_coord) +
-    sum_up_left(grid, x_coord, y_coord) - 1 == 4
+    sum_down_right(x_coord, y_coord) +
+    sum_up_left(x_coord, y_coord) - 1 == 4
   end
 
-  def stop_counting?(grid, x, y)
+  def stop_counting?(x, y)
     out_of_bounds = false
     is_nil = false
     if x < 0 || x > 5 || y < 0 || y > 5
@@ -132,67 +132,67 @@ class Game
   ####
   # with something more DRY
 
-  def count_up(grid, x, y)
-    if stop_counting?(grid, x, y)
+  def count_up(x, y)
+    if stop_counting?(x, y)
       return 0
     end
     count = 1
-    count += count_up(grid, x - 1, y)
+    count += count_up(x - 1, y)
   end
 
-  def count_down(grid, x, y)
-    if stop_counting?(grid, x, y)
+  def count_down(x, y)
+    if stop_counting?(x, y)
       return 0
     end
     count = 1
-    count += count_down(grid, x + 1, y)
+    count += count_down(x + 1, y)
   end
 
-  def count_left(grid, x, y)
-    if stop_counting?(grid, x, y)
+  def count_left(x, y)
+    if stop_counting?(x, y)
       return 0
     end
     count = 1
-    count += count_left(grid, x, y - 1)
+    count += count_left(x, y - 1)
   end
 
-  def count_right(grid, x, y)
-    if stop_counting?(grid, x, y)
+  def count_right(x, y)
+    if stop_counting?(x, y)
       return 0
     end
     count = 1
-    count += count_right(grid, x, y + 1)
+    count += count_right(x, y + 1)
   end
 
-  def sum_up_left(grid, x, y)
-    if stop_counting?(grid, x, y)
+  def sum_up_left(x, y)
+    if stop_counting?(x, y)
       return 0
     end
     count = 1
-    count += sum_up_left(grid, x - 1, y - 1)
+    count += sum_up_left(x - 1, y - 1)
   end
 
-  def sum_up_right(grid, x, y)
-    if stop_counting?(grid, x, y)
+  def sum_up_right(x, y)
+    if stop_counting?(x, y)
       return 0
     end
     count = 1
-    count += sum_up_right(grid, x - 1, y + 1)
+    count += sum_up_right(x - 1, y + 1)
   end
 
-  def sum_down_left(grid, x, y)
-    if stop_counting?(grid, x, y)
+  def sum_down_left(x, y)
+    if stop_counting?(x, y)
       return 0
     end
     count = 1
-    count += sum_down_left(grid, x + 1, y - 1)
+    count += sum_down_left(x + 1, y - 1)
   end
 
-  def sum_down_right(grid, x, y)
-    if stop_counting?(grid, x, y)
+  def sum_down_right(x, y)
+    if stop_counting?(x, y)
       return 0
     end
     count = 1
-    count += sum_down_right(grid, x + 1, y + 1)
+    count += sum_down_right(x + 1, y + 1)
   end
 end
