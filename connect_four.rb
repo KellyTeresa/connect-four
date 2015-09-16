@@ -3,6 +3,7 @@ Dir[File.join('lib', '**', '*.rb')].each do |file|
 end
 
 def play
+  # good abstraction here. It might be nice to see if you could abstract all your `puts` statements into this method.
   puts "Welcome to Connect Four!"
   game = Game.new
   game.get_names
@@ -17,6 +18,7 @@ def restart?
 
   if answer == "y"
     initiate_game
+    # rather than recursively calling a method here. I might just create a while loop that keeps running the game from the start until the user no longer want's to 'restart' games.
   elsif answer == "n"
     puts "Ok, bye!"
   else
