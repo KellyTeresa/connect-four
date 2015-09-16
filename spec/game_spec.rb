@@ -20,6 +20,7 @@ RSpec.describe Game do
 
     it "has one instance of Board" do
       expect(game.board).to be_a Board
+      # can you assert something here about the state of the Board? This is still a good test.
     end
 
     it "starts on turn 0" do
