@@ -87,6 +87,7 @@ class Game
     @board.last_coords[1]
   end
 
+  # this and many of the following methods would be good to extract into some 'calculation' objects. Those objects might help you reduce the duplication here.
   def vertical_win
     count_up(x_coord, y_coord) +
     count_down(x_coord, y_coord) - 1 == 4
