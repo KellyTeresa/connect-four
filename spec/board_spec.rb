@@ -1,6 +1,7 @@
 require_relative "spec_helper"
 
 RSpec.describe Board do
+  # good tests here!
   context "an instance of Board" do
     let(:board) { Board.new }
     it "has 6 rows" do
