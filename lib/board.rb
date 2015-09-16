@@ -14,11 +14,13 @@ class Board
        puts "|"
     end
     puts "| A  B  C  D  E  F  G |"
+    # could this display method return a single string with the whole board, and then the code that 'calls' the display method could look something like: puts game.display. Basically seperate the printing of this code to the command line from the creation of the board string.
   end
 
   def drop(token, column)
     y = convert(column)
     if y == "error" || @grid_array[0][y] != "_"
+      # this would be a nice line of code to refactor into a method that describes the logic that is being parsed here.
       print "You cannot place a token there. Choose a different column (A-G): "
       column = gets.chomp
       drop(token, column)
@@ -33,6 +35,7 @@ class Board
   private
 
   def convert(column)
+    # it looks like there could be an abstraction here to check for these values
     if column == "a"
       0
     elsif column == "b"
